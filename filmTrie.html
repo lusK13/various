@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+body{
+    margin: 0px;
+}
+#global{
+
+        height: 100vh;
+        display: flex;
+        width: 100vw;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+.film{
+    border: 1px solid;
+    padding: 10px 20px 10px 20px;
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    
+
+}
+button{
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    height: 100px;
+    width: 400px;
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    cursor: pointer;
+}
+
+textarea{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    box-sizing: border-box;
+}
+
+#info{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    box-sizing: border-box;
+}
+
+</style>
+<body>
+    <button onclick='toggleList()'>PLAY</button>
+    <div id="global">
+        <div>
+    <div class="film">FILM</div>
+    
+</div>
+    </div>
+    <div>
+        <p id="info">Liste des films dans le jeu du hasard</p>
+        <textarea name="movie_list" id="movies" cols="30" rows="10">film 1; film 2; film 3; film 4; film 5; film 6; film 7; film 8; film 9; film 10;</textarea>
+    </div>
+</body>
+<script>
+
+let filmView = document.getElementsByClassName("film");
+let button = document.querySelector("button");
+let movieList = document.querySelector("textarea#movies");
+
+
+movieList.addEventListener("keydown", (e)=>{
+    films = e.path[0].value.split(";").filter(e=>e !== "");
+})
+
+// film 1; film 2; film 3; film 4; film 5; film 6; film 7; film 8; film 9; film 10; 
+
+
+let films = movieList.value.split(';').filter(e=>e !== "");
+
+erreur = [];
+
+
+// //Liste des films déjà vu afin de les enlevers du trie
+// // à décommenter pour activer la fonction
+// let filmsVu = "".split('_');
+
+// erreur = [];
+// filmsVu.forEach(filmvu => {
+
+//     if(!films.some(film=>filmvu.toLowerCase() == film.toLowerCase())){
+//         erreur.push(filmvu);
+//     }
+//     else{
+//         films = films.filter(e=>{
+//             return filmvu.toLowerCase() !== e.toLowerCase();
+//         })
+//     }
+
+// });
+
+let launch = false;
+
+    
+function aleatoireMoove(){
+    
+    
+    aleatoire = Math.floor(Math.random()*films.length);
+    filmView[0].innerHTML = films[aleatoire]
+    // console.log(films[aleatoire]);
+    
+
+}
+
+let diff = 20;
+
+function aleatoireMooveOut(){
+
+    aleatoire = Math.floor(Math.random()*films.length);
+    filmView[0].innerHTML = films[aleatoire]
+    diff **= 1.035;
+
+    if(diff >= 600){
+        filmView[0].style.color = "green";
+        filmView[0].style.fontWeight = "bold";
+
+    }
+    else{
+        setTimeout(aleatoireMooveOut, diff);
+    }
+
+}
+
+
+var interval
+function toggleList(){
+    if(launch){
+        diff = 50;
+        button.innerHTML = "PLAY";
+        clearInterval(interval)
+        setTimeout(aleatoireMooveOut, diff)
+        launch = false;
+        console.log(films);
+    }
+    else{
+        diff = 20;
+        filmView[0].style.color = "initial";
+        filmView[0].style.fontWeight = "initial";
+
+        if(erreur || erreur.length == 0){
+            button.innerHTML = "STOP";
+            launch = true;
+            interval = setInterval(aleatoireMoove, 50);
+        }
+        else{
+            console.log('film vu non trouvé: ',erreur);
+        }
+    }
+}
+
+
+
+
+</script>
+</html>
