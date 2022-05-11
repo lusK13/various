@@ -1,0 +1,15 @@
+extends ./layout.pug
+
+block content
+    form(action="", method="post")
+        label(for="prenom") Prénom
+        input(type="text", name="firstname", id="prenom")
+        label(for="nom") Nom
+        input(type="text", name="lastname", id="nom")
+        label(for="email") Email
+        input(type="email", name="email", id="email")
+        label(for="password") Mot de passe
+        input(type="password", name="password", id="password")
+        button Envoyer
+    a(href="register") Créer un compte
+    
