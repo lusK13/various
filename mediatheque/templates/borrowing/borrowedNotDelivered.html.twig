@@ -1,0 +1,44 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Retards{% endblock %}
+
+{% block main %}
+
+<div class="container-fluid offset-1 col-10">
+    <h1 class="mb-3">Emprunts non rendu</h1>
+    <a class="btn btn-outline-secondary mb-3" href="{{ path('relaunch_email') }}">Envoyer des mails de relance</a>
+    {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+    {% endfor %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Document</th>
+                <th>Date de retour initial</th>
+                <th>Nombre de jours de retard</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for borrowing in borrowings %}
+            <tr>
+                <td>{{ borrowing.lastName }}</td>
+                <td>{{ borrowing.firstName }}</td>
+                <td>{{ borrowing.email }}</td>
+                <td>{{ borrowing.title }}</td>
+                <td>{{ borrowing.expectedReturnDate|date('d-m-Y') }}</td>
+                <td {% if borrowing.days > 90 %} class="text-danger" {% endif %}>{{ borrowing.days }} {% if borrowing.days > 90 %} / Amende{% endif %}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

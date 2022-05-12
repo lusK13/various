@@ -1,0 +1,11 @@
+
+{#{ form_row(form) }#}
+<h3>Ressources</h3>
+<ul class="ressources">
+    
+    {% for ressources in form.ressources %}
+        {% dump(ressources) %}
+            
+
+    {% endfor %}
+</ul>

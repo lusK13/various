@@ -1,0 +1,17 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Edit EBook{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+
+    <h1>Edit EBook</h1>
+
+    {{ include('e_book/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <button type="button" class="btn btn-secondary mb-3"><a href="{{ path('e_book_index') }}">back to list</a></button>
+
+    {{ include('e_book/_delete_form.html.twig') }}
+</div>
+
+{% endblock %}

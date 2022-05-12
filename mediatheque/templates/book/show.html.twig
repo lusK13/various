@@ -1,0 +1,65 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Book{% endblock %}
+
+{% block main %}
+    <div class="container-fluid offset-1 col-10">
+
+        <h1 class="mb-3">Book</h1>
+
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ book.id }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ book.title }}</td>
+                </tr>
+                <tr>
+                    <th>Cote</th>
+                    <td>{{ book.cote }}</td>
+                </tr>
+                <tr>
+                    <th>Format</th>
+                    <td>{{ book.format }}</td>
+                </tr>
+                <tr>
+                    <th>CodeOeuvre</th>
+                    <td>{{ book.codeOeuvre }}</td>
+                </tr>
+                <tr>
+                    <th>Pages</th>
+                    <td>{{ book.pages }}</td>
+                </tr>
+                {% for involved in author %}
+                <tr>
+                    <th>{{ involved.role }}</th>
+                    <td> {{ involved.author }}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('book_index') }}">back to list</a>
+
+        <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
+
+        {{ include('book/_delete_form.html.twig') }}
+        </div>
+
+        <h4>Livres recommandé</h4>
+
+        <div class = "recommandation">
+
+        {% for book in recommandation %}
+            <a href="{{ path('book_show', {'id': book.id}) }}">{{ book.title }}</a>
+
+            {% else %}<p>Aucune recommandation disponible pour le moment</p>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

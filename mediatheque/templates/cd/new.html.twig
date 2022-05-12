@@ -1,0 +1,16 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}New CD{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+
+    <h1>Create new CD</h1>
+
+    {{ include('cd/_form.html.twig') }}
+        
+
+    <a href="{{ path('cd_index') }}">back to list</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}New Author{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+
+    <h1>Create new Author</h1>
+
+    {{ include('author/_form.html.twig') }}
+
+    <a href="{{ path('author_index') }}">back to list</a>
+</div>
+
+{% endblock %}

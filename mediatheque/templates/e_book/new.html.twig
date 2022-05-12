@@ -1,0 +1,15 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}New EBook{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+
+    <h1>Create new EBook</h1>
+
+    {{ include('e_book/_form.html.twig') }}
+
+    <a href="{{ path('e_book_index') }}">back to list</a>
+</div>
+
+{% endblock %}

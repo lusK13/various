@@ -1,0 +1,14 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}New DVD{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+
+    <h1>Create new DVD</h1>
+
+    {{ include('dvd/_form.html.twig') }}
+
+    <a href="{{ path('dvd_index') }}">back to list</a>
+</div>
+{% endblock %}

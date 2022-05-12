@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="RrDBpm_" resname="Auteurs les plus présents dans le catalogue">
+        <source>Auteurs les plus présents dans le catalogue</source>
+        <target>Authors most present in the catalog</target>
+      </trans-unit>
+      <trans-unit id="Y122U8T" resname="Derniers documents ajoutés">
+        <source>Derniers documents ajoutés</source>
+        <target>Latest documents added</target>
+      </trans-unit>
+      <trans-unit id="Rypu2Fb" resname="Liste des documents les plus empruntés">
+        <source>Liste des documents les plus empruntés</source>
+        <target>List of the most borrowed documents</target>
+      </trans-unit>
+      <trans-unit id="Y4y9q8S" resname="Adhérents inscrits le mois derniers">
+        <source>Adhérents inscrits le mois derniers</source>
+        <target>Members registered last month</target>
+      </trans-unit>
+      <trans-unit id="euC.6LX" resname="Les prochains évenements">
+        <source>Les prochains évenements</source>
+        <target>The next events</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

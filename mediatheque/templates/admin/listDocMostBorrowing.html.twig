@@ -1,0 +1,10 @@
+<section class="card m-3 p-0" >
+    <div class="card-header p-3">
+        <h5 class="card-title">{% trans %}Liste des documents les plus empruntés{% endtrans %}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+    {% for document in documents %}
+         <li class="list-group-item"><a href="{{ path('document_show', {id: document.id}) }}">{{ document.title }} : emprunté {{ document.docId }} fois</a></li>
+    {% endfor %}
+    </ul>
+</section>

@@ -1,0 +1,45 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}IsInvolvedIn index{% endblock %}
+
+{% block main %}
+<div class="container-fluid offset-1 col-10">
+
+    <h1 class="mb-3">IsInvolvedIn repertory</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Role</th>
+                <th>Document</th>
+                <th>Auteur</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for is_involved_in in is_involved_ins %}
+            <tr>
+                <td>{{ is_involved_in.id }}</td>
+                <td>{{ is_involved_in.role }}</td>
+                <td>{{ is_involved_in.getDocument }}</td>
+                <td>{{ is_involved_in.getAuthor }}</td>
+                <td>
+                    <a href="{{ path('is_involved_in_show', {'id': is_involved_in.id}) }}">show</a>
+                    <a href="{{ path('is_involved_in_edit', {'id': is_involved_in.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(is_involved_ins) }}
+    <a href="{{ path('is_involved_in_new') }}">Create new</a><br>
+
+    <a href="{{ path('admin_index') }}">back to admin panel </a>
+</div>
+
+{% endblock %}

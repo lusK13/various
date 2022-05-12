@@ -1,0 +1,19 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}MeetUp index{% endblock %}
+
+{% block main %}
+
+<section class="card m-3 p-0">
+    <div class="card-header p-3">
+        <h5 class="card-title">Liste des meet_up à venir</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+    {% for meet_up in meet_ups %}
+        <li class="list-group-item"><a href="{{ path('meet_up_show', {id: meet_up.id}) }}">{{ meet_up.author.firstName ~' '~ meet_up.author.lastName }}  {{ meet_up.date ? meet_up.date|date('Y-m-d H:i:s') : '' }}  {{ meet_up.id|totalPlaces(meet_up.id) }}</a></li>
+    {% endfor %}
+    </ul>
+</section>
+
+{% endblock %}
+

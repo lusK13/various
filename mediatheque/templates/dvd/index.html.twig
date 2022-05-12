@@ -1,0 +1,49 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}DVD index{% endblock %}
+
+{% block main %}
+<div class="container-fluid offset-1 col-10">
+
+    <h1 class="mb-3">DVD repertory</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Cote</th>
+                <th>Format</th>
+                <th>CodeOeuvre</th>
+                <th>Duration</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dvd in dvds %}
+            <tr>
+                <td>{{ dvd.id }}</td>
+                <td>{{ dvd.title }}</td>
+                <td>{{ dvd.cote }}</td>
+                <td>{{ dvd.format }}</td>
+                <td>{{ dvd.codeOeuvre }}</td>
+                <td>{{ dvd.duration ? dvd.duration|date('H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('dvd_show', {'id': dvd.id}) }}">show</a>
+                    <a href="{{ path('dvd_edit', {'id': dvd.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(dvds) }}
+    <a href="{{ path('dvd_new') }}">Create new</a><br>
+
+    <a href="{{ path('admin_index') }}">back to admin panel </a>
+</div>
+
+{% endblock %}

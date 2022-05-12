@@ -1,0 +1,10 @@
+<section class="card m-3 p-0">
+    <div class="card-header p-3">
+        <h5 class="card-title">{% trans %}Adhérents inscrits le mois derniers{% endtrans %}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+    {% for member in listMemberRegLastMonth %}
+         <li class="list-group-item"><a href="{{ path('member_show', {id: member.id}) }}">{{member.lastName}} {{member.firstName}}</a></li>
+    {% endfor %}
+    </ul>
+</section>

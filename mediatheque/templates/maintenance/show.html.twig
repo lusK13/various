@@ -1,0 +1,42 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Maintenance{% endblock %}
+
+{% block main %}
+<div class="container-fluid offset-1 col-10">
+
+    <h1 class="mb-3">Maintenance</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ maintenance.id }}</td>
+            </tr>
+            <tr>
+                <th>Employée</th>
+                <td>{{ maintenance.getEmployee }}</td>
+            </tr>
+             <tr>
+                <th>Document</th>
+                <td>{{ maintenance.getDocument }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ maintenance.status }}</td>
+            </tr>
+            <tr>
+                <th>MaintenanceDate</th>
+                <td>{{ maintenance.maintenanceDate ? maintenance.maintenanceDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('maintenance_index') }}">back to list</a>
+
+    <a href="{{ path('maintenance_edit', {'id': maintenance.id}) }}">edit</a>
+
+    {{ include('maintenance/_delete_form.html.twig') }}
+</div>
+
+{% endblock %}

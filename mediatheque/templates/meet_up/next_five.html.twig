@@ -1,0 +1,35 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}5 prochain meet-up{% endblock %}
+
+    {% block main %}
+
+    <style>
+    td, th{padding: 10px;}
+    </style>
+<table>
+<thead>
+            <tr>
+                <th>Auteur</th>
+                <th>Date</th>
+                <th>Actions</th>
+
+            </tr>
+        </thead>
+
+{% for nextfive in nextfives %}
+
+    <tr>
+        <td>{{ nextfive.author }}</td>
+        <td>{{ nextfive.date|date("Y-m-d") }}</td>
+        <td>
+                    <a href="{{ path('meet_up_show', {'id': nextfive.id}) }}">show {{ nextfive.id }}</a>
+                    <a href="{{ path('meet_up_edit', {'id': nextfive.id}) }}">edit</a>
+        </td>
+    </tr>
+
+{% endfor %}
+</table>
+
+
+{% endblock %}

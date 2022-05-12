@@ -1,0 +1,66 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}DVD{% endblock %}
+
+{% block main %}
+    <div class="container-fluid offset-1 col-10">
+
+        <h1 class="mb-3">DVD</h1>
+
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ dvd.id }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ dvd.title }}</td>
+                </tr>
+                <tr>
+                    <th>Cote</th>
+                    <td>{{ dvd.cote }}</td>
+                </tr>
+                <tr>
+                    <th>Format</th>
+                    <td>{{ dvd.format }}</td>
+                </tr>
+                <tr>
+                    <th>CodeOeuvre</th>
+                    <td>{{ dvd.codeOeuvre }}</td>
+                </tr>
+                <tr>
+                    <th>Duration</th>
+                    <td>{{ dvd.duration ? dvd.duration|date('H:i:s') : '' }}</td>
+                </tr>
+                {% for involved in author %}
+                <tr>
+                    <th>{{ involved.role }}</th>
+                    <td> {{ involved.author }}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('dvd_index') }}">back to list</a>
+
+        <a href="{{ path('dvd_edit', {'id': dvd.id}) }}">edit</a>
+
+        {{ include('dvd/_delete_form.html.twig') }}
+    </div>
+
+    <h4>DVD recommandé</h4>
+
+    <div class = "recommandation">
+
+        {% for dvd in recommandation %}
+
+            <a href="{{ path('dvd_show', {'id': dvd.id}) }}">{{ dvd.title }}</a>
+            {% else %}<p>Aucune recommandation disponible pour le moment</p>
+
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

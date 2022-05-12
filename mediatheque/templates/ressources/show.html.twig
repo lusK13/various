@@ -1,0 +1,36 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Ressources{% endblock %}
+
+{% block main %}
+    <div class="container-fluid offset-1 col-10">
+        <h1 class="mb-3">Ressources</h1>
+
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ ressource.id }}</td>
+                </tr>
+                <tr>
+                    <th>Url</th>
+                    <td>{{ ressource.url }}</td>
+                </tr>
+                <tr>
+                    <th>Type</th>
+                    <td>{{ ressource.type }}</td>
+                </tr>
+                <tr>
+                    <th>Doc_Id</th>
+                    <td>{{ ressource.document }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('ressources_index') }}">back to list</a>
+
+        <a href="{{ path('ressources_edit', {'id': ressource.id}) }}">edit</a>
+
+        {{ include('ressources/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

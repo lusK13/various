@@ -1,0 +1,49 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Book index{% endblock %}
+
+{% block main %}
+<div class="container-fluid offset-1 col-10">
+
+    <h1 class="mb-3">Book repertory</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Cote</th>
+                <th>Format</th>
+                <th>CodeOeuvre</th>
+                <th>Pages</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.cote }}</td>
+                <td>{{ book.format }}</td>
+                <td>{{ book.codeOeuvre }}</td>
+                <td>{{ book.pages }}</td>
+                <td>
+                    <a href="{{ path('book_show', {'id': book.id}) }}">show</a>
+                    <a href="{{ path('book_edit', {'id': book.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(books) }}
+    <a href="{{ path('book_new') }}">Create new</a><br>
+
+    <a href="{{ path('admin_index') }}">back to admin panel </a>
+</div>
+
+{% endblock %}

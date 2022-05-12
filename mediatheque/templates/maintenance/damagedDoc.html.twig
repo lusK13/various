@@ -1,0 +1,37 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Livre endommagé{% endblock %}
+
+{% block main %}
+<div class="container-fluid offset-1 col-10">
+
+    <h1 class="mb-3">Livre endommagé</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom du livre</th>
+                <th>État</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for damagedoc in damagedocs %}
+            <tr>
+                <td>{{ damagedoc.document }}</td>
+                <td>{{ damagedoc.status }}</td>
+                <td>
+                    <a href="{{ path('maintenance_show', {'id': damagedoc.id}) }}">show</a>
+                    <a href="{{ path('maintenance_edit', {'id': damagedoc.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+

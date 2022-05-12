@@ -1,0 +1,70 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Journal{% endblock %}
+
+{% block main %}
+    <div class="container-fluid offset-1 col-10">
+
+        <h1 class="mb-3">Journal</h1>
+
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ journal.id }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ journal.title }}</td>
+                </tr>
+                <tr>
+                    <th>Cote</th>
+                    <td>{{ journal.cote }}</td>
+                </tr>
+                <tr>
+                    <th>Format</th>
+                    <td>{{ journal.format }}</td>
+                </tr>
+                <tr>
+                    <th>CodeOeuvre</th>
+                    <td>{{ journal.codeOeuvre }}</td>
+                </tr>
+                <tr>
+                    <th>Periodicity</th>
+                    <td>{{ journal.periodicity }}</td>
+                </tr>
+                <tr>
+                    <th>SubscriptionDate</th>
+                    <td>{{ journal.subscriptionDate ? journal.subscriptionDate|date('Y-m-d H:i:s') : '' }}</td>
+                </tr>
+                {% for involved in author %}
+                <tr>
+                    <th>{{ involved.role }}</th>
+                    <td> {{ involved.author }}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('journal_index') }}">back to list</a>
+
+        <a href="{{ path('journal_edit', {'id': journal.id}) }}">edit</a>
+
+        {{ include('journal/_delete_form.html.twig') }}
+    </div>
+
+    <h4>Journaux recommandé</h4>
+
+    <div class = "recommandation">
+
+
+        {% for journal in recommandation %}
+
+            <a href="{{ path('journal_show', {'id': journal.id}) }}">{{ journal.title }}</a>
+            {% else %}<p>Aucune recommandation disponible pour le moment</p>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

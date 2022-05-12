@@ -1,0 +1,15 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}New Borrowing{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+
+    <h1>Create new Borrowing</h1>
+
+    {{ include('borrowing/_form.html.twig') }}
+
+    <a href="{{ path('borrowing_index') }}">back to list</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}CD{% endblock %}
+
+{% block main %}
+    <div class="container-fluid offset-1 col-10">
+
+        <h1>CD</h1>
+
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ cd.id }}</td>
+                </tr>
+                <tr>
+                    <th>Title</th>
+                    <td>{{ cd.title }}</td>
+                </tr>
+                <tr>
+                    <th>Cote</th>
+                    <td>{{ cd.cote }}</td>
+                </tr>
+                <tr>
+                    <th>Format</th>
+                    <td>{{ cd.format }}</td>
+                </tr>
+                <tr>
+                    <th>CodeOeuvre</th>
+                    <td>{{ cd.codeOeuvre }}</td>
+                </tr>
+                <tr>
+                    <th>Plages</th>
+                    <td>{{ cd.plages }}</td>
+                </tr>
+                <tr>
+                    <th>Duration</th>
+                    <td>{{ cd.duration ? cd.duration|date('H:i:s') : '' }}</td>
+                </tr>
+                {% for involved in author %}
+                <tr>
+                    <th>{{ involved.role }}</th>
+                    <td> {{ involved.author }}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('cd_index') }}">back to list</a>
+
+        <a href="{{ path('cd_edit', {'id': cd.id}) }}">edit</a>
+
+        {{ include('cd/_delete_form.html.twig') }}
+    </div>
+
+    <h4>CD recommandé</h4>
+
+    <div class = "recommandation">
+
+        {% for cd in recommandation %}
+
+            <a href="{{ path('cd_show', {'id': cd.id}) }}">{{ cd.title }}</a>
+            {% else %}<p>Aucune recommandation disponible pour le moment</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

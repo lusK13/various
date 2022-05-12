@@ -1,0 +1,53 @@
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    display: block;
+}
+
+
+div.pagination{
+    justify-content: center;
+}
+div.pagination span a, div.pagination span.current{
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+div.pagination span.page a:hover{
+    background-color: lightgray;
+}
+
+div.pagination span a{
+    text-decoration: none;
+}
+
+
+div.pagination span.current{
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  div.recommandation{
+    display: flex;
+    flex-direction: column;
+
+  }
+  div.recommandation a{
+    margin: 5px 5px 5px 5px;
+    font-size: 1.5rem;
+    padding: 5px;
+    width: 200px;
+    border: 1px solid black;
+    text-align: center;
+    transition: all 0.3s;
+}
+div.recommandation a:hover{
+    text-decoration: none;
+    color: rgb(60, 80, 102);
+    margin: 5px 5px 5px 15px;
+}

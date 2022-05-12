@@ -1,0 +1,11 @@
+<section class="card m-3 p-0">
+    <div class="card-header p-3">
+        <h5 class="card-title">{% trans %}Les prochains évenements{% endtrans %}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+    {% for nextfive in nextfives %}
+        <li class="list-group-item"><a href="{{ path('meet_up_show', {'id': nextfive.id}) }}">{{nextfive.author}} - {{nextfive.date|date("d/m/Y") }}</a></li>
+    {% endfor %}
+    </ul>
+</section>
+

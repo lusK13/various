@@ -1,0 +1,29 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}New Document{% endblock %}
+
+{% block main %}
+    <h1>Create new Document</h1>
+
+    
+
+    {{ form_start(form) }}
+    {#{ form_row(form) }#}
+    {{ include('document/_form.html.twig') }}
+        <h3>Ressources</h3>
+        <ul class="ressources">
+            {% for ressources in form.ressources %}
+                <li>{{ form_row(ressources.url) }}</li>
+                <li>{{ form_row(ressources.type) }}</li>
+            {% endfor %}
+        </ul>
+    {{ form_end(form) }}    
+
+    <a href="{{ path('document_index') }}">back to list</a>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('js/formRessources.js') }}"></script>
+    
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Member index{% endblock %}
+
+{% block main %}
+<div class="container-fluid offset-1 col-10">
+
+    <h1 class="mb-3">Member repertory</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Pseudo</th>
+                <th>Email</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>PostalCode</th>
+                <th>City</th>
+                <th>Adress</th>
+                <th>MembershipDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for member in members %}
+            <tr>
+                <td>{{ member.id }}</td>
+                <td>{{ member.pseudo }}</td>
+                <td>{{ member.email }}</td>
+                <td>{{ member.firstName }}</td>
+                <td>{{ member.lastName }}</td>
+                <td>{{ member.postalCode }}</td>
+                <td>{{ member.city }}</td>
+                <td>{{ member.adress }}</td>
+                <td>{{ member.membershipDate ? member.membershipDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('member_show', {'id': member.id}) }}">show</a>
+                    <a href="{{ path('member_edit', {'id': member.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(members) }}
+    <a href="{{ path('member_new') }}">Create new</a><br>
+
+    <a href="{{ path('admin_index') }}">back to admin panel </a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Employee index{% endblock %}
+
+{% block main %}
+<div class="container-fluid offset-1 col-10">
+
+    <h1 class="mb-3">Employee repertory</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Pseudo</th>
+                <th>Email</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.pseudo }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.firstName }}</td>
+                <td>{{ employee.lastName }}</td>
+                <td>
+                    <a href="{{ path('employee_show', {'id': employee.id}) }}">show</a>
+                    <a href="{{ path('employee_edit', {'id': employee.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(employees) }}
+    <a href="{{ path('employee_new') }}">Create new</a><br>
+
+    <a href="{{ path('admin_index') }}">back to admin panel </a>
+</div>
+
+{% endblock %}

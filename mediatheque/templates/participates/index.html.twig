@@ -1,0 +1,43 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Participates index{% endblock %}
+
+{% block main %}
+<div class="container-fluid offset-1 col-10">
+    <h1 class="mb-3">Participates index</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Meet Up</th>
+                <th>Participant</th>
+                <th>Places</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for participate in participates %}
+            <tr>
+                <td>{{ participate.id }}</td>
+                <td>{{ participate.getMeetup }}</td>
+                <td>{{ participate.getUser }}</td>
+                <td>{{ participate.places }}</td>
+                <td>
+                    <a href="{{ path('participates_show', {'id': participate.id}) }}">show</a>
+                    <a href="{{ path('participates_edit', {'id': participate.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(participates) }}
+    <a href="{{ path('participates_new') }}">Create new</a><br>
+
+    <a href="{{ path('admin_index') }}">back to admin panel </a>
+</div>
+{% endblock %}

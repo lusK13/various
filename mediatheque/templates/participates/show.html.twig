@@ -1,0 +1,36 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Participates{% endblock %}
+
+{% block main %}
+<div class="container-fluid offset-1 col-10">
+    <h1 class="mb-3">Participates</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ participate.id }}</td>
+            </tr>
+            <tr>
+                <th>Meet Up</th>
+                <td>{{ participate.getMeetup }}</td>
+            </tr>
+            <tr>
+                <th>Participant</th>
+                <td>{{ participate.getUser }}</td>
+            </tr>
+            <tr>
+                <th>Places</th>
+                <td>{{ participate.places }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('participates_index') }}">back to list</a>
+
+    <a href="{{ path('participates_edit', {'id': participate.id}) }}">edit</a>
+
+    {{ include('participates/_delete_form.html.twig') }}
+</div>
+{% endblock %}

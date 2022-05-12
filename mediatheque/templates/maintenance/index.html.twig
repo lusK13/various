@@ -1,0 +1,47 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}Maintenance index{% endblock %}
+
+{% block main %}
+<div class="container-fluid offset-1 col-10">
+
+    <h1 class="mb-3">Maintenance repertory</h1>
+    <p><a href="{{ path('damaged_doc') }}">Liste des livres à remplacer</a></p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Employée</th>
+                <th>Document</th>
+                <th>Status</th>
+                <th>MaintenanceDate</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for maintenance in maintenances %}
+            <tr>
+                <td>{{ maintenance.id }}</td>
+                <td>{{ maintenance.getEmployee }}</td>
+                <td>{{ maintenance.getDocument }}</td>
+                <td>{{ maintenance.status }}</td>
+                <td>{{ maintenance.maintenanceDate ? maintenance.maintenanceDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('maintenance_show', {'id': maintenance.id}) }}">show</a>
+                    <a href="{{ path('maintenance_edit', {'id': maintenance.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(maintenances) }}
+    <a href="{{ path('maintenance_new') }}">Create new</a><br>
+
+    <a href="{{ path('admin_index') }}">back to admin panel </a>
+</div>
+
+{% endblock %}

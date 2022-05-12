@@ -1,0 +1,15 @@
+{% extends 'admin/baseAdmin.html.twig' %}
+
+{% block title %}New IsInvolvedIn{% endblock %}
+
+{% block main %}
+<div class="container mt-3">
+
+    <h1>Create new IsInvolvedIn</h1>
+
+    {{ include('is_involved_in/_form.html.twig') }}
+
+    <a href="{{ path('is_involved_in_index') }}">back to list</a>
+</div>
+
+{% endblock %}

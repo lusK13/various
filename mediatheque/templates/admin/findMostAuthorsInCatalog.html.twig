@@ -1,0 +1,11 @@
+<section class="card m-3 p-0">
+    <div class="card-header p-3">
+        <h5 class="card-title">{% trans %}Auteurs les plus présents dans le catalogue{% endtrans %}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+    {% for author in authors %}
+        <li class="list-group-item"><a href="{{ path('author_show', {id: author.id}) }}">{{author.lastName }} {{author.firstName}} - {{author.c}} fois</a></li>
+    {% endfor %}
+    </ul>
+</section>
+
