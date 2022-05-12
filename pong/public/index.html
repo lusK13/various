@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+#canvas{
+    
+    border: 1px solid;
+}
+.hide{
+    display: none;
+}
+
+</style>
+<body>
+
+    <div id="connexion">
+        <input type="text" id="username">
+        <button id="btnconnexion">Connexion</button>    
+    </div>
+    <div id="choose" class="hide">
+        <a id="player1" data-player="player1">Bleu</a>
+        <a id="player2" data-player="player2">Rouge</a>
+        <a data-player="spectator">Spectateur</a>
+    </div>
+    <div id="game" class="hide">
+        <canvas width="1000px" height="580px" id="canvas"></canvas>
+    </div>
+
+    
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/Pong.js"></script>
+</body>
+</html>
