@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <form id="size">
+    <input type="number" name="width" id="width" placeholder="largeur" value="1200">
+    <input type="number" name="height" id="height" placeholder="hauteur" value="800" >
+    <button onclick="sizeInfo()" id="submit">Générer</button>
+    <span></span>
+    </form>
+
+    <canvas></canvas>
+    
+
+    <div id="display-none"><div id="text-genere"></div><button onclick="copy()">Copier dans le press papier</button></div>
+
+
+<button onclick="toJs()" style="display: block;">To javascript</button>
+</body>
+
+<script>
+
+    let body = document.querySelector("body");
+
+    let size = document.getElementById("size");
+    let widthElement = document.getElementById('width');
+    let heightElement = document.getElementById('height');
+
+    let canvas = document.querySelector('canvas')
+
+    let button = document.getElementById('submit')
+
+    let color = 'red'
+
+    size.addEventListener("submit", (e)=>{
+
+        e.preventDefault()
+
+
+
+    })
+
+
+
+
+    // console.log(body)
+
+
+    function sizeInfo(){
+
+        let width = widthElement.value;
+        let height = heightElement.value;
+
+        createField(width, height);
+    
+    }
+
+
+    function createField(width, height){
+        
+        canvas.style.backgroundColor = "whitesmoke"
+        // canvas.style.border = "1px solid"
+
+        canvas.setAttribute('width', width)
+        canvas.setAttribute('height', height)
+
+        
+        
+
+        
+    }
+
+    let posMouseDown= [];
+    let posMouseUp = [];
+
+    let context = canvas.getContext("2d");
+
+    let posCanvas = canvas.getBoundingClientRect();
+
+    let figure;
+    let figures =  [];
+
+    
+
+    function mouseMove(e){
+        
+            posMouseMove = [e.clientX - Math.ceil(posCanvas.left), e.clientY - Math.ceil(posCanvas.top)]            
+
+            figure = {color:color,position:[posMouseDown[0], posMouseDown[1], posMouseMove[0]-posMouseDown[0],posMouseMove[1]-posMouseDown[1]]}
+
+            // console.log(posMouseMove);
+            context.clearRect(0,0,canvas.width,canvas.height)
+
+            context.fillStyle = 'red';
+            context.filter = 'opacity(0.3)'
+            context.fillRect(...figure.position)
+            figures.forEach(element => {
+                context.fillStyle = color;
+                context.filter = 'opacity(1)'
+                context.fillRect(...element.position)
+                
+            });
+            let span = size.querySelector('span');
+            span.innerHTML = `position : x=${posMouseDown[0]}; y=${posMouseDown[1]}; largeur=${posMouseMove[0]-posMouseDown[0]}; hauteur=${posMouseMove[1]-posMouseDown[1]}`
+
+                        // console.log(context);
+
+    }
+
+
+    canvas.addEventListener('mousemove',(e)=>{
+
+        let testX = e.clientX - Math.ceil(posCanvas.left)
+        let testY = e.clientY - Math.ceil(posCanvas.top);
+        let span = size.querySelector('span');
+        span.innerHTML = `position : x=${testX}; y=${testY};`
+
+
+    })
+
+
+    canvas.addEventListener('mousedown',(e)=>{
+
+        posMouseDown = [e.clientX - Math.ceil(posCanvas.left),e.clientY - Math.ceil(posCanvas.top)];
+
+        
+        
+        canvas.addEventListener("mousemove",mouseMove)
+
+    })
+
+    canvas.addEventListener("mouseup", e=>{
+        context.fillStyle = color;
+        context.filter = 'opacity(1)'
+        context.fillRect(...figure.position)
+        // console.log(figure);
+        figures.push(figure)
+
+    })
+
+
+
+    window.addEventListener('mouseup',(e)=>{
+        canvas.removeEventListener("mousemove", mouseMove);
+    })
+    
+
+    function toJs(){
+
+        let text = '';
+        let drawVar = 'draw.addObject(';
+        figures.forEach((e,i)=>{
+
+            text+= `let mur${i+1} =  Rectangle(${e.position.toString()});<br>`
+            
+            if(i>=figures.length-1)
+            drawVar+= `mur${i+1});`
+            else
+            drawVar+= `mur${i+1},`
+
+        })
+
+        
+
+
+        let textGenere = document.getElementById("text-genere");
+        let displayNone = document.getElementById("display-none");
+
+        
+
+        textGenere.innerHTML = text+drawVar;
+        displayNone.style.display = "block"
+        // console.log(text);
+
+    }
+
+
+    function copy(){
+
+        let textGenere = document.getElementById("text-genere");
+
+        let range = document.createRange()
+        let selection = window.getSelection();
+
+        range.selectNode(textGenere);
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        document.execCommand("copy");
+
+        selection.removeAllRanges()
+ 
+        let displayNone = document.getElementById("display-none");
+        displayNone.style.display = 'none'
+
+
+    }    
+
+
+
+
+
+
+</script>
+
+
+
+</html>

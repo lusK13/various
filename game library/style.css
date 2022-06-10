@@ -1,0 +1,19 @@
+#display-none{
+background-color: aquamarine;
+padding: 20px;
+position: absolute;
+top:20%;
+left: 20%;
+bottom: 20%;
+right: 20%;
+display: none;
+}
+
+#text-genere{
+
+   
+}
+#display-none>button{
+    background-color: black;
+    color: aliceblue;
+}
