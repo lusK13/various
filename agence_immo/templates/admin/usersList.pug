@@ -1,0 +1,23 @@
+extends layout_admin.pug
+
+block main
+    table
+        thead
+            tr
+                td Mail
+                td Nom
+                td Prénom
+                td Role
+                td Action
+                
+        tbody
+            each val in result
+                tr
+                    td=val.mail 
+                    td=val.lastname 
+                    td=val.firstname
+                    td=val.name
+                    td
+                        a(href="/admin/user/supprimer/"+val.id) <i class="fas fa-trash" ></i>
+                        a(href="/admin/user/modifier/"+val.id) <i class="fas fa-edit"></i>
+        

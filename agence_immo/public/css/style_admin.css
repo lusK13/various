@@ -1,0 +1,72 @@
+body *{
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Arial Narrow', Arial, sans-serif;
+
+    background-color: aliceblue;
+    height: 100vh;
+    margin : 0;
+    
+}
+header{
+    padding-top: 100px;
+    float: left;
+    height: 100vh;
+    width: 200px;
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: column;
+}
+header> a{
+    padding: 10px;
+    text-align: right;
+    color: cornsilk;
+    font-size: 1.2rem;
+    background-color: darkslategray;
+    text-decoration: none;
+}
+header>a:hover{
+    background-color: rgb(73, 122, 122);
+}
+main{
+    padding-top: 12px;
+    margin-left: 220px;
+}
+main>a{
+    position: relative;
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: floralwhite;
+    padding: 5px;
+    display: inline-block;
+    background-color: darkslategrey;
+    border-radius: 3px;
+}
+main>a:hover{
+    background-color: rgb(59, 97, 97);
+}
+
+main>table{
+    margin-top: 70px;
+}
+main table tr{
+    margin-top:10px;
+    background-color: rgb(250, 229, 201);
+}
+main table tr td{
+    padding: 10px;
+}
+main table tr td i{
+    color: black;
+    margin: 0 4px;
+}
+main section article>.fas{
+    display: inline;
+}
+
+.lcUpload__block{position:relative; text-align:center; 
+    font-size: 1.25rem;  background-color: #bbb; padding: 80px 20px;}
+.lcUpload__file{ position:absolute;top:0;left:0; height:100%;width:100%;visibility:hidden; }
+.lcUpload__input, .lcUpload__input label{ position:absolute;top:0;left:0; height:100%;width:100%; padding-top:35px;}
+

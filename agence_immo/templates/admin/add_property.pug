@@ -1,0 +1,36 @@
+extends layout_admin.pug
+
+block main
+    form(action="", method="post" enctype="multipart/form-data") 
+
+        div
+            label(for="title")  Titre de l'annonce
+            input(type="text" name="title")
+        div
+            label(for="type")  Type d'annonce
+            input(type="text" name="type")
+        div
+            label(for="square")  Surface
+            input(type="number" name="square")
+        div
+            label(for="num_street")  Numéro et nom de la voie
+            input(type="text" name="num_street")
+        div
+            label(for="postal_code")  Code postal
+            input(type="text" name="postal_code")    
+        div
+            label(for="city")  Ville
+            input(type="text" name="city")
+        
+        .lcUpload__block
+            .lcUpload__input
+                input.lcUpload__file(type="file" name="files[]" id="file" data-multiple-caption="{count} fichiers sélectionnés" multiple)
+                label(for="file")
+                    strong Choisissez le fichier
+                    span.lcUpload__dragndrop  ou glissez le ici
+
+
+        div
+            button(type="submit") Envoyer
+block script
+    script(src="/js/test.js") 

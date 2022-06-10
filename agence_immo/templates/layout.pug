@@ -1,0 +1,36 @@
+doctype html
+html(lang="fr")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Agence Immo - #{title}
+        link(rel="stylesheet", href="/css/style.css")
+        
+    body
+        - var messages = getMessages()
+            if messages.notify
+                each msg in messages.notify
+                    .alert.alert-info= msg
+            if messages.error
+                each msg in messages.error
+                    .alert.alert-danger= msg
+    
+        header
+            div
+                a(href="/",) Accueil
+                if !session.user
+                    a(href="/inscription",) Inscription
+                    a(href="/connexion",) Connexion
+                else
+                    a(href="/admin",)  Admin
+                    a(href="/deconnexion",) Deconnexion
+
+        main
+            block main
+        footer
+            p voici mon footer
+    
+        block script
+        script(src=process.env.BROWSER_REFRESH_URL)
+

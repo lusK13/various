@@ -1,0 +1,24 @@
+extends layout_admin.pug
+
+block main
+    a(href="/admin/ajouter_bien") Ajouter un bien 
+    table
+        thead
+            tr
+                td Titre de l'annonce
+                td Type
+                td Surface
+                td Adresse
+                td action
+
+        tbody
+            each val in result
+                tr
+                    td=val.title 
+                    td=val.type 
+                    td=val.square + "m²"
+                    td=val.num_street + " " + val.postal_code + " " + val.city
+                    td
+                        a(href="/admin/bien/supprimer/"+val.id) <i class="fas fa-trash" ></i>
+                        a(href="/admin/bien/modifier/"+val.id) <i class="fas fa-edit"></i>
+        

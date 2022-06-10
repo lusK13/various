@@ -1,0 +1,15 @@
+extends layout.pug
+
+block main
+    form(action="", method="post") 
+
+        div
+            label(for="mail")  Mail
+            input(type="mail" name="mail")
+        div
+            label(for="password")  Password
+            input(type="password" name="password")
+        div
+            button(type="submit") Envoyer
+
+    a(href="/mot_de_passe_oublie") mot de passe oublié?

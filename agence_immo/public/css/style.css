@@ -1,0 +1,41 @@
+html *{
+    box-sizing: border-box;
+}
+body{
+    
+    font-family: Verdana, sans-serif;
+    margin: 0;
+
+}
+header{
+    padding-top: 120px;
+    padding-bottom: 10px;
+    background-color: rgb(91, 209, 87);
+    width: 100%;
+    float: right;
+}
+
+header>div{
+    float: right;
+    width: max-content;
+}
+header a{
+    border: rgb(255, 255, 255) solid 1px;
+    padding: 2px 5px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin: 10px;
+    transition: all 1s;
+}
+header a:hover{
+    border: rgb(136, 136, 136) solid 1px;
+}
+main{
+    height: 100vh;
+    background-color: rgb(255, 247, 255);
+}
+footer{
+    position: fixed;
+    bottom: 0;
+}

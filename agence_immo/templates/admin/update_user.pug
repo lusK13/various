@@ -1,0 +1,17 @@
+extends layout_admin.pug
+
+block main
+    form(action="", method="post")
+        div
+            label(for="mail") E-mail
+            input(type="email" name="mail" id="mail" value=user.mail)
+        div
+            label(for="firstname") Firstname
+            input(type="text" name="firstname" id="firstname" value=user.firstname)
+        div
+            label(for="lastname") Lastname
+            input(type="text" name="lastname" id="lastname" value=user.lastname)
+
+        input(type="hidden" name="id" value=user.id)
+        div 
+            button Mettre à jour
